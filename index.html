@@ -542,36 +542,6 @@
     function animateHearts(){ctx.clearRect(0,0,canvas.width,canvas.height);hearts=hearts.filter(h=>h.alpha>0);hearts.forEach(h=>{h.x+=h.vx;h.y+=h.vy;h.alpha-=h.decay;h.rotation+=h.rotSpeed;h.vy+=.04;ctx.save();ctx.translate(h.x,h.y);ctx.rotate(h.rotation);drawHeart(0,0,h.size,h.color,Math.max(0,h.alpha));ctx.restore()});requestAnimationFrame(animateHearts)}
     animateHearts();
 
-    // ===== LOVE BURST + POST-EXPLOSION WATERMARK =====
-    let loveAnimating=false;
-    document.getElementById('love-burst-btn').addEventListener('click',function(){
-        if(loveAnimating)return;loveAnimating=true;
-        const ov=document.getElementById('love-overlay'),bh=document.getElementById('big-heart'),lt=document.getElementById('love-text'),sf=document.getElementById('screen-flash'),wm=document.getElementById('love-watermark');
-        bh.className='big-heart';lt.className='love-text';
-        ov.classList.remove('bg-in');ov.classList.add('show');
-        // Phase 1: Heart grows
-        setTimeout(()=>bh.classList.add('phase-grow'),100);
-        setTimeout(()=>ov.classList.add('bg-in'),300);
-        // Phase 2: Heart shines
-        setTimeout(()=>{bh.classList.remove('phase-grow');bh.classList.add('phase-shine')},2500);
-        // Phase 3: EXPLOSION — heart disappears, flash, hearts burst
-        setTimeout(()=>{
-            bh.classList.remove('phase-shine');bh.classList.add('phase-explode');
-            sf.classList.add('flash');setTimeout(()=>sf.classList.remove('flash'),150);
-            const cx=window.innerWidth/2,cy=window.innerHeight/2;
-            spawnHeart(true,cx,cy,80);setTimeout(()=>spawnHeart(true,cx,cy,60),100);setTimeout(()=>spawnHeart(true,cx,cy,40),250);
-            for(let i=0;i<5;i++){setTimeout(()=>{const r=document.createElement('div');r.className='ripple-ring';r.style.cssText='left:50%;top:50%;border-color:rgba(196,87,122,'+(0.5-i*.08)+')';ov.appendChild(r);setTimeout(()=>r.remove(),1800)},i*150)}
-            spawnConfetti(120);
-            // Show overlay text after explosion
-            setTimeout(()=>lt.classList.add('show'),400);
-        },3800);
-        // Phase 4: Overlay fades out
-        setTimeout(()=>{ov.classList.remove('bg-in');setTimeout(()=>{ov.classList.remove('show');loveAnimating=false},600)},7000);
-        // Phase 5: Show watermark ON THE PAGE exactly when overlay disappears
-        // This is the moment after explosion — the watermark appears at the button area
-        setTimeout(()=>{wm.classList.add('visible');setTimeout(()=>wm.classList.add('wm-float'),1800)},6000);
-    });
-
     function spawnConfetti(n=80){const cs=['#c4577a','#e87da3','#f0a8c4','#f5d8a8','#f5c5d8','#fff','#f0c27f','#fce4ec'];for(let i=0;i<n;i++){const p=document.createElement('div');p.className='confetti-piece';p.style.left=(Math.random()*100)+'%';p.style.top='-10px';p.style.background=cs[Math.floor(Math.random()*cs.length)];p.style.setProperty('--dur',(Math.random()*3+2)+'s');p.style.setProperty('--delay',(Math.random()*.8)+'s');const s=Math.random()*8+4;p.style.width=s+'px';p.style.height=s+'px';p.style.borderRadius=Math.random()>.5?'50%':'2px';document.body.appendChild(p);setTimeout(()=>p.remove(),6000)}}
 
     // ===== PETALS =====
