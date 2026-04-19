@@ -322,7 +322,7 @@
                     <div class="envelope-flap absolute top-0 left-0 right-0 h-1/2 rounded-t-2xl z-20" style="background:linear-gradient(180deg,#6b2343,#4a1930);border:1px solid rgba(196,87,122,.3);border-bottom:none;clip-path:polygon(0 0,50% 100%,100% 0)"></div>
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 text-3xl heartbeat" id="seal" style="filter:drop-shadow(0 0 10px rgba(196,87,122,.5))">♥</div>
                 </div>
-                <div class="secret-text mt-8" id="secret-text"><div class="glass border-glow rounded-2xl p-6"><p class="text-rose-300/60 text-xs mb-2 tracking-wider uppercase">Секрет раскрыт</p><p class="text-white/50 text-sm font-light leading-relaxed">Этот конверт — как наше чувство. Снаружи неприметный, а внутри — самое тёплое, что у меня есть. И я хочу, чтобы ты носила его в сердце, как я ношу тебя.</p></div></div>
+                <div class="secret-text mt-8" id="secret-text"><div class="glass border-glow rounded-2xl p-6"><p class="text-rose-300/60 text-xs mb-2 tracking-wider uppercase">Секрет раскрыт</p><p class="text-white/50 text-sm font-light leading-relaxed">Этот конверт — как наше чувство. Снаружи неприметный, а внутри — самое тёплое, что у меня есть. И я хочу, чтобы ты никогда этого не забывала.</p></div></div>
                 <div class="text-center mt-12"><button onclick="goToPage(6)" class="reveal btn-glow bg-gradient-to-r from-rose-500 to-rose-600 text-white px-8 py-4 rounded-full text-sm font-medium tracking-wide">Читать письмо ♥</button></div>
             </div>
         </div>
@@ -453,16 +453,12 @@
     const things=[
         {emoji:'📱',name:'Наши переписки',msg:'Каждое твоё сообщение — как маленький подарок. Я перечитываю их и улыбаюсь, как дурак.'},
         {emoji:'🎵',name:'Для неё 2',msg:'Когда играет эта песня, я думаю только о тебе. Теперь она наша.'},
-        {emoji:'☕',name:'Утренние кофе',msg:'Или то, что мы пьём по утрам. Главное не напиток, а то, что ты рядом.'},
         {emoji:'🤗',name:'Твои обнимашки',msg:'Когда ты обнимаешь — мир останавливается. Это моё любимое место на планете.'},
-        {emoji:'😄',name:'Твой смешок',msg:'Я бы заплатил за запись твоего смеха. Самая красивая мелодия.'},
-        {emoji:'📱‍💻',name:'Вечерние звонки',msg:'Когда мы говорим по ночам и не замечаем, как пролетает время до утра.'},
-        {emoji:'😱',name:'Твои стишки',msg:'Когда ты пишешь мне смешные стишки — я таю. Даже если они нелепые.'},
+        {emoji:'📱‍💻',name:'Ночные посиделки',msg:'Когда мы говорим по ночам и не замечаем, как пролетает время до утра.'},
         {emoji:'❤️',name:'Твоё сердечко',msg:'Когда ты отправляешь сердечко — это как маленькое «я думаю о тебе».'},
         {emoji:'😴',name:'Спать вместе',msg:'Когда ты засыпаешь рядом — это самый спокойный сон в моей жизни.'},
-        {emoji:'🌙',name:'Спокойной ночи',msg:'Два слова, которые я хочу говорить тебе каждую ночь до конца жизни.'},
-        {emoji:'🫣',name:'Смешки голосом',msg:'Когда ты смеёшься так, что хрипишь — это убивает меня. В хорошем смысле.'},
-        {emoji:'💋',name:'Наши поцелуи',msg:'Первый, второй, сотый — каждый ощущается как первый. Магия.'},
+        {emoji:'😄',name:'Смех и улыбка',msg:'Когда ты смеёшься и на твоём илце улыбка, то я понимаю. что ты счастлива.'},
+        {emoji:'💋',name:'Наши поцелуи',msg:'Первый, второй, сотый — каждый ощущается как первый.'},
     ];
     const grid=document.getElementById('things-grid');
     things.forEach((t,i)=>{
